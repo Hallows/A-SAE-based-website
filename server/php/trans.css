@@ -1,0 +1,29 @@
+body {font-size:100%;}
+
+h1{
+	font-size:2em;
+	font-family: Arial;
+	text-align: center;
+}
+
+h2{
+	font-size:0.75em;
+	font-family: Arial;
+	text-align: left;
+}
+select{
+	align-content: left;
+	font-family: Arial;
+	width: 50%;
+}
+input{
+	align-content: left;
+	font-family: Arial;
+	width:70%;
+}
+.btn{
+	align-self: left; 
+	width:30%;
+	height: 17%
+	font-family: Arial;
+}

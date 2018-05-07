@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"   
+  
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+	<TITLE>The EEEM042 Assignment</TITLE>
+	<link rel="stylesheet" type="text/css" href="register.css" />
+	<meta charset="UTF-8">
+</head>
+<script src="static/js/jquery-3.2.1.min.js"></script>
+
+<script type="text/javascript">
+function postData(){
+var myselect=document.getElementById("type");
+var form = document.createElement("form");
+value=myselect.options[index].value;
+var url="/server/php/search.php"
+$.post(url,value);
+}
+</script>
+
+<body>
+    <h1>Regist Page</h1>
+	<form action="/server/php/regist.php" method=post>
+	<h2>What do you want to regist?</h2>
+	<select name="type">
+		<option value="sensor">Sensor</option>
+		<option value="event">Event</option>
+		<option value="device">Device</option>
+	</select>
+	<h2>Item name</h2>
+	<input type="text" name="name"><br>
+	<h2>Item describe</h2>
+	<input type="text" name="describe"><br>
+	<h2>Location</h2>
+	<input type="text" name="location"><br>
+	<input type="submit" class="btn" value="Submit">
+	</form>
+	<input type="button" calss="btn" value="search">
+</body>
+
+</html>
