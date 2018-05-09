@@ -6,7 +6,7 @@ $location = $_POST["location"];
 $time=time();
 $id=0;
 
-// 连主库
+// connect to database
 $db = mysql_connect(SAE_MYSQL_HOST_M.':'.SAE_MYSQL_PORT,SAE_MYSQL_USER,SAE_MYSQL_PASS);
 
 if ($db) {

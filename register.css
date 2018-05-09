@@ -27,12 +27,14 @@ select{
 	align-self: left; 
 	width:30%;
 	height: 17%
-	font-family: Arial;
+	font: Arial;
 }
 .button1{
 	align-self: left; 
 	width:70%;
 	height: 17%
-	font-family: Arial;
+	font: Arial;
 }
-
+.file{
+	color-profile: white;
+}

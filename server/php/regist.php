@@ -6,7 +6,7 @@
 <h2>The JSON file of posted data shows like below:</h2>
 <br>
 <?php
-//目标变量
+//target class
 class TransData {
        public $Ttype = "";
        public $Tname  = "";
@@ -17,13 +17,13 @@ class TransData {
 	$name  = $_POST["name"];
 	$describe = $_POST["describe"];
 	$location = $_POST["location"];
-//实体化目标变量
+//Instantiation
    $e = new TransData();
    $e->Ttype =  $_POST["type"];
    $e->Tname  =  $_POST["name"];
    $e->Tdescribe =  $_POST["describe"];
    $e->Tlocation =  $_POST["location"];
-//将目标转为JSON并显示
+//Change to JSON
    echo json_encode($e);
 ?>
 <br>
@@ -42,7 +42,8 @@ class TransData {
         "describe": describe,
         "location": loc,
     };
-//post所有信息到sava.php
+
+//post all info to sava.php
     function gogogo(PARAMS){
     	var temp = document.createElement("form");
     	temp.method = "post";

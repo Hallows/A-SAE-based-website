@@ -4,25 +4,18 @@
 
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<!--set title and link css stylesheet-->
 <head>
 	<TITLE>The EEEM042 Assignment</TITLE>
 	<link rel="stylesheet" type="text/css" href="register.css" />
 	<meta charset="UTF-8">
 </head>
+<!--import JS file-->
 <script src="static/js/jquery-3.2.1.min.js"></script>
-
-<script type="text/javascript">
-function postData(){
-var myselect=document.getElementById("type");
-var form = document.createElement("form");
-value=myselect.options[index].value;
-var url="/server/php/search.php"
-$.post(url,value);
-}
-</script>
-
+<!--!!!!!!!!!Body Start HERE!!!!!!!!!!!!!-->
 <body bgcolor="#003e7e">
     <h1>Registration Page</h1>
+    <!--registration form-->
 	<form action="/server/php/regist.php" method=post>
 	<h2>What do you want to regist?</h2>
 	<select name="type">
@@ -42,19 +35,24 @@ $.post(url,value);
 		<option value="Australia">Australia</option>
 		<option value="Iran">Iran</option>
 	</select><br>
-	<br>
 	<input type="submit" class="btn" value="Submit"><br>
 	</form>
 	<br>
+	<!--search form-->
 	<form action="/server/php/search.php" method=post>  
         <select name="type">
 			<option value="sensor">Sensor</option>
 			<option value="event">Event</option>
 			<option value="device">Device</option>
 		</select>
-        <input type="submit" class="btn" value="Search"><br>
+        <input type="submit" class="btn" value="Search">
     </form>  
-	
+    <br>
+    <!--upload file form-->
+	<form method="post" action="/server/php/XMLtransfer.php" enctype="multipart/form-data">
+    	<input name="file" type="file" />
+    	<input type="submit" class="btn" value="analysis">
+	</form>
 </body>
 
 </html>

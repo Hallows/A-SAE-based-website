@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<upload>
+	<type>event</type>
+	<name>test event</name>
+	<describe>Reminder</describe>
+	<location>China</location>
+</upload>
