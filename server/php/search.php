@@ -6,26 +6,47 @@ $location = $_POST["location"];
 $time=time();
 $id=0;
 
-$mysql = new SaeMysql();
+// 连主库
+$db = mysql_connect(SAE_MYSQL_HOST_M.':'.SAE_MYSQL_PORT,SAE_MYSQL_USER,SAE_MYSQL_PASS);
+
+if ($db) {
+    mysql_select_db(SAE_MYSQL_DB, $db);
+}
+else
+	echo "Can not connect to database!";
 
 
 if($type=="sensor")
-$sql = "INSERT  INTO `assignment` ( `type` , `name` , `describe`, `location` ) VALUES ( '"  .$type . "' , '" . $name . "' , '" . $describe . "' , '" . $location . "' ) ";
+$result = mysql_query("SELECT * FROM assignment WHERE type='sensor'");
 if($type=="event")
-
+$result = mysql_query("SELECT * FROM assignment WHERE type='event'");
 if($type=="device")
+$result = mysql_query("SELECT * FROM assignment WHERE type='device'");
+
+echo "<table border='1'>
+<tr>
+<th>time</th>
+<th>type</th>
+<th>name</th>
+<th>location</th>
+<th>describe</th>
+</tr>";
+
+while($row = mysql_fetch_array($result))
+  {
+  echo "<tr>";
+  echo "<td>" . $row['time'] . "</td>";
+  echo "<td>" . $row['type'] . "</td>";
+  echo "<td>" . $row['name'] . "</td>";
+  echo "<td>" . $row['location'] . "</td>";
+  echo "<td>" . $row['describe'] . "</td>";
+  echo "</tr>";
+  }
+echo "</table>";
+
+mysql_close($con);
 
 
-
-$temp=$mysql->getdata( $sql );
-if( $mysql->errno() != 0 )
-{
-    die( "Error:" . $mysql->errmsg() );
-}
-else
-{
-	echo $temp; 
-}
-
-$mysql->closeDb();
 ?>
+
+

@@ -4,19 +4,21 @@ h1{
 	font-size:2em;
 	font-family: Arial;
 	text-align: center;
+	color:white;
 }
 
 h2{
 	font-size:0.75em;
 	font-family: Arial;
 	text-align: left;
+	color:white;
 }
 select{
 	align-content: left;
 	font-family: Arial;
 	width: 50%;
 }
-input{
+.editbox{
 	align-content: left;
 	font-family: Arial;
 	width:70%;
@@ -27,3 +29,10 @@ input{
 	height: 17%
 	font-family: Arial;
 }
+.button1{
+	align-self: left; 
+	width:70%;
+	height: 17%
+	font-family: Arial;
+}
+

@@ -21,8 +21,8 @@ $.post(url,value);
 }
 </script>
 
-<body>
-    <h1>Regist Page</h1>
+<body bgcolor="#003e7e">
+    <h1>Registration Page</h1>
 	<form action="/server/php/regist.php" method=post>
 	<h2>What do you want to regist?</h2>
 	<select name="type">
@@ -34,11 +34,27 @@ $.post(url,value);
 	<input type="text" name="name"><br>
 	<h2>Item describe</h2>
 	<input type="text" name="describe"><br>
-	<h2>Location</h2>
-	<input type="text" name="location"><br>
-	<input type="submit" class="btn" value="Submit">
+	<h2>Up Location</h2>
+	<select name="location">
+		<option value="UK">UK</option>
+		<option value="China">China</option>
+		<option value="USA">USA</option>
+		<option value="Australia">Australia</option>
+		<option value="Iran">Iran</option>
+	</select><br>
+	<br>
+	<input type="submit" class="btn" value="Submit"><br>
 	</form>
-	<input type="button" calss="btn" value="search">
+	<br>
+	<form action="/server/php/search.php" method=post>  
+        <select name="type">
+			<option value="sensor">Sensor</option>
+			<option value="event">Event</option>
+			<option value="device">Device</option>
+		</select>
+        <input type="submit" class="btn" value="Search"><br>
+    </form>  
+	
 </body>
 
 </html>
