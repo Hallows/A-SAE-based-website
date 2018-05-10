@@ -10,8 +10,28 @@
 	<link rel="stylesheet" type="text/css" href="register.css" />
 	<meta charset="UTF-8">
 </head>
-<!--import JS file-->
-<script src="static/js/jquery-3.2.1.min.js"></script>
+
+<?php
+static $filename;
+if(isset($_POST["upload"])){  
+    // SAE Storage Class
+    $storage= new SaeStorage();  
+    $domain = 'assignment';//name of storage domain
+      
+    $fileType = $_FILES["file"]["type"]; //file type
+  
+      
+    if($storage->fileExists($domain,$filename) == true) {// is already exist?
+        echo "<p>File exist!</p>";  
+        }  
+    else{  
+    $filename = $_FILES["file"]["name"];  
+    $storage->upload( $domain,$filename,$_FILES[file][tmp_name]);   
+	}   
+	echo "<h1> Success Upload!</h1>";
+} 
+?>
+
 <!--!!!!!!!!!Body Start HERE!!!!!!!!!!!!!-->
 <body bgcolor="#003e7e">
     <h1>Registration Page</h1>
@@ -49,21 +69,36 @@
     </form>  
     <br>
     <!--upload file form-->
-	<form enctype="multipart/form-data"  method="post">
-    	<input name="file" type="file" />
-    	<input type="submit" class="btn" value="Analysis">
+	<form method="POST" enctype="multipart/form-data">  
+    	<input type="file" name="file" id="file" />  
+    	<input type="submit" value="Upload" name="upload"/>     
 	</form>
+	<input type="submit" onclick="gogogo()" class="btn" value="Analysis">
+
+
 </body>
-<?php  
-if(isset($_POST[up])){  
-    $s2 =new SaeStorage();//实例化  
-    $name =$_FILES['myfile']['name'];//上传到服务器的文件名称  
-    if($s2->upload('20141001challenge',$name,$_FILES['myfile']['tmp_name'])){//服务器Domain Name，传到服务器的文件名，本地文件名  
-         echo "OK";  
-         echo $s2->getUrl("20141001challenge",$name);//输出上传文件在storage的访问路径  
-    }else{  
-         echo "FAIL";  
-    }  
-}  
-?>  
+
+  
+<SCRIPT LANGUAGE="JavaScript">
+
+    function gogogo(){
+    	var filename= '<?php echo $filename;?>';
+    	var params = {
+        "filename": filename,
+    	};
+    	var temp = document.createElement("form");
+    	temp.method = "post";
+    	temp.style.display = "none";
+		temp.action = "/server/php/XMLtransfer.php";
+    	for (var x in params) {
+        	var opt = document.createElement("textarea");
+        	opt.name = x;
+        	opt.value = params[x];
+        	temp.appendChild(opt);
+    	}
+    	document.body.appendChild(temp);
+    	temp.submit();
+    	return temp;
+    }
+</SCRIPT>   
 </html>

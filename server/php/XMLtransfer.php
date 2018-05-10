@@ -5,8 +5,20 @@
 <body>
 <h2>The XML result of unpack XML shows like below</h2>
 <br>
+
 <?PHP
+$filename  = $_POST["filename"];
+echo $filename;
+echo "<br>";
+$s = new SaeStorage();
+$domainName = "assignment";  
+$file=$s->read($domainName, $filename);
 
-$input=file_get_contents("php://input");
-
+$xml = simplexml_load_string($file);
+foreach($xml->children() as $child)
+  {
+  echo $child->getName() . ": " . $child . "<br />";
+  }
 ?>
+</body>
+<h2>Do you want to save it?</h2>
