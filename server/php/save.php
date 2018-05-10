@@ -16,4 +16,5 @@ if( $mysql->errno() != 0 )
 }
 
 $mysql->closeDb();
+echo "<h1>Success!</h1>"
 ?>
